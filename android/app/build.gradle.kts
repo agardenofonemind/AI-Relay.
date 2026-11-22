@@ -5,11 +5,13 @@ plugins {
 
 android {
     namespace = "com.agardenofonemind.airelay"
-    compileSdk = 36
+    // Compose 1.12.x requires compileSdk 37. This does not require raising targetSdk.
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.agardenofonemind.airelay"
         minSdk = 26
+        // Keep runtime behavior opt-in level at Android 16 for the MVP.
         targetSdk = 36
         versionCode = 1
         versionName = "0.1.0"
