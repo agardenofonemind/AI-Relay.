@@ -2,12 +2,12 @@
 
 - 协议版本：0.2
 - 项目阶段：M1 — Android 本地任务管理原型
-- 总体状态：M1 待启动
+- 总体状态：M1-A — 云端 APK 构建验证进行中
 - 最后更新：2026-11-22
 
 ## 当前目标
 
-基于已确认的 MVP v0.2 协作协议，开始设计并验证 Android 本地任务管理原型。优先建立最小可用的任务创建、编辑、状态展示和分享交接流程；GitHub 同步按后续里程碑推进。
+先建立 Android 项目骨架与 GitHub Actions 云端 Debug APK 构建闭环，再进行真机安装验证。M1-B 本地任务管理界面将在构建链路验证后启动。
 
 ## 已确认决策
 
@@ -25,31 +25,38 @@
 | 仓库写入 | 初期由 GPT 负责，Gemini 提供审查与交接建议 |
 | 关键操作 | 发送、覆盖、合并、发布和解除认领前由用户确认 |
 | 主协作仓库 | [agardenofonemind/AI-Relay.](https://github.com/agardenofonemind/AI-Relay.)（公开仓库，名称末尾含句点） |
+| Android 项目 | `android/`；Kotlin + Jetpack Compose |
+| 首期构建 | GitHub Actions 云端构建 Debug APK；暂不要求本地 Android Studio |
 
 ## 活跃任务
 
 | Task ID | 标题 | 状态 | Assignee | Claimed At | Last Updated |
 |---|---|---|---|---|---|
-| 暂无 | M1 原型任务尚未建立 | queued | 未分配 | — | 2026-11-22 |
+| AR-0001 | Android 项目骨架与云端 APK 构建验证 | active | GPT | 2026-11-22 | 2026-11-22 |
+
+任务卡：[tasks/AR-0001-android-build.md](tasks/AR-0001-android-build.md)
 
 ## 关键阻塞点
 
-- 尚未确定 M1 首个可运行原型的最小功能范围。
-- 尚未开始 Android 客户端实现或真机验证。
+- 首次 GitHub Actions 构建尚未运行或验证。
+- Debug APK 尚未生成，目标手机尚未安装测试。
+- Gradle Wrapper 暂未提交；首次 bootstrap 使用云端固定版本 Gradle，待构建成功后评估补齐。
 
 ## 里程碑
 
 - [x] M0：协作协议建立、双模型评审并经用户确认
-- [ ] M1：Android 本地任务管理原型
+- [ ] M1-A：Android 项目骨架与云端 Debug APK 构建验证
+- [ ] M1-B：Android 本地任务管理原型
 - [ ] M2：GitHub 仓库读写与 SHA 版本冲突处理
 - [ ] M3：ChatGPT / Gemini 客户端分享交接
 - [ ] M4：半自动化、差异比较与复核流程
 
 ## 下一步
 
-1. 定义 M1 最小原型的用户流程和验收条件。
-2. 盘点 Android 实现方案及手机端开发约束。
-3. 建立首个 M1 任务卡，并通过 GPT → Gemini → GPT 的人工交接流程试运行。
+1. 运行并修复首次 Android 云端构建。
+2. 下载 Debug APK，在 iQOO Neo 9 / Android 16 上安装并启动。
+3. 将必要源码或 Diff 直接交给 Gemini 独立审查。
+4. M1-A 验收通过后启动 M1-B。
 
 ## 状态维护规则
 
